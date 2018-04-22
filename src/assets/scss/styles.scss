@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/font-awesome/scss/font-awesome';
+@import 'variables';
+
+.full-height {
+  height: 100vh;
+}
+
+.modal-content {
+  border: none !important;
+}
+
+.fade .show {
+  opacity: 1;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background: none;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.ng-dirty.ng-invalid + .form-control-feedback {
+  color: $white;
+}

@@ -1,0 +1,41 @@
+@import "../../assets/scss/variables";
+
+.recipe-box {
+  background-color: rgba($black,.4);
+  box-shadow: 0 0 10px rgba($black,.3);
+  width: 50rem;
+  padding: 2rem;
+  border-radius: 2px;
+
+  a {
+    color: $white;
+  }
+}
+
+
+#recipeList {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#recipeList td, #recipeList th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#recipeList tr:nth-child(even){background-color: #f2f2f2;}
+
+#recipeList tr:hover {background-color: #ddd;}
+
+#recipeList th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.recipe-preview {
+  background-color: $white;
+}

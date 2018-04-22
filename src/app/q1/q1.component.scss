@@ -1,0 +1,52 @@
+@import '../../assets/scss/variables.scss';
+
+
+.q1 {
+    background-color: $gray;
+}
+
+.heading {
+    color: $white;
+}
+
+.profile-photo-image {
+    border-radius: 2px;
+    height: 160px;
+    width: 160px;
+    position: relative;
+    border: 4px solid $white;
+}
+
+.upload-photo-container {
+    width: 160px;
+    text-align: left;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 4px;
+}
+
+.upload-photo {
+    position: relative;
+    bottom: 60px;
+    padding: 10px;
+    display: block;
+    opacity: 0;
+    color: $white;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+    background: rgba(0, 0, 0, .6);
+}
+
+.upload-photo:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+.fa-camera {
+    color: $white;
+}
+
+.uploader {
+    display: none;
+}

@@ -1,0 +1,14 @@
+@import '../../assets/scss/variables.scss';
+
+.profile-picture-container {
+  background-color: $black;
+}
+
+.profile-picture-image {
+  width: 500px;
+  height: 500px;
+}
+
+.fa-times {
+  color: $white;
+}

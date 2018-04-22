@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="recipe-box">
+          <form novalidate [formGroup]="recipeForm">
+
+            <div class="row">
+              <div class="col-12 text-center mt-1 mb-1">
+                <h3> Recipe Builder</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <angular2-multiselect class="form-control" formControlName="selectedActions"
+                                        [data]="recipeActions" [(ngModel)]="selectedRecipeActions"
+                                        [settings]="actionsDDSettings"
+                                        (onSelect)="onRecipeActionSelect($event)"
+                                        (onDeSelect)="onRecipeActionDeSelect($event)">
+                  </angular2-multiselect>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <angular2-multiselect class="form-control" formControlName="selectedSupplies"
+                                        [data]="recipeSupplies" [(ngModel)]="selectedRecipeSupplies"
+                                        [settings]="suppliesDDSettings"
+                                        (onSelect)="onRecipeSupplySelect($event)"
+                                        (onDeSelect)="onRecipeSupplyDeSelect($event)">
+                  </angular2-multiselect>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class=" form-group"
+                     [ngClass]="{'has-danger': recipeForm.controls.name | isvalid: ['required'], 'has-success': recipeForm.controls.name.valid}">
+                  <input id="name" name="name" autocomplete="off" placeholder="Recipe Name" type="text"
+                         class="form-control form-control-lg"
+                         [ngClass]="{'form-control-danger': recipeForm.controls.name | isvalid: ['required'], 'form-control-success': recipeForm.controls.name.valid}"
+                         formControlName="name">
+                  <div *ngIf="recipeForm.controls.name | isvalid: ['required']" class="form-control-feedback"
+                       ng-message="required">Recipe Name is mandatory.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 mt-1 mb-1">
+                <div class="container recipe-preview">
+                  <div class="row" *ngFor="let recipe of recipeOrder">
+                    <span class="ml-2"><i class="fa fa-times text-danger mr-3" (click)="onIngredientRemove(recipe)"></i>{{recipe.itemName}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <button (click)="onCreateRecipe()"
+                          class="btn btn-primary" type="button" role="button">
+                    Create Recipe
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+
+    <div class="row">
+      <div class="col-12">
+
+        <div class="row">
+          <div class="col-12 text-center mt-1 mb-1">
+            <h3> Recipe List</h3>
+          </div>
+        </div>
+        <div *ngIf="recipeList.length > 0">
+          <!--<table id="recipeList">
+            <tr>
+              <th>No</th>
+              <th>Name</th>
+              <th>View Steps</th>
+            </tr>
+            <tr *ngFor="let recipe of recipeList; let recipeNo = index">
+              <td>{{recipeNo}}</td>
+              <td>{{recipe.name}}</td>
+              <td>{{recipe.recipeOrder}}</td>
+            </tr>
+          </table>-->
+          <div id="accordion">
+            <div class="card" *ngFor="let recipe of recipeList; let recipeNo = index">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" attr.data-target="#collapse{{recipeNo}}"
+                          aria-expanded="true" attr.aria-controls="collapse{{recipeNo}}">
+                    {{recipe.name}}
+                  </button>
+                </h5>
+              </div>
+
+              <div attr.id="collapse{{recipeNo}}" class="collapse show" aria-labelledby="headingOne"
+                   data-parent="#accordion">
+                <div class="card-body">
+                  <span *ngFor="let ingredients of recipe.recipeOrder">
+                    {{ingredients.itemName + ','}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="recipeList.length === 0">
+          <div class="col-12 text-center mt-1 mb-1">
+            <div class="alert alert-warning" role="alert">
+              No recipe found!!
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

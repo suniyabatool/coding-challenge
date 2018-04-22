@@ -1,0 +1,25 @@
+<div class="q1 full-height">
+  <div class="d-flex justify-content-center pt-5 mb-5">
+    <h1 class="heading">Upload Profile Picture</h1>
+  </div>
+
+  <div class="d-flex justify-content-center profile-picture-container pb-5">
+    <div class="profile-photo-container">
+      <div class="profile-photo">
+        <a id="profile-photo-view" class="profile-photo-view" href="#" (click)="onOpenProfilePictureClick()">
+          <img class="profile-photo-image" [src]="profilePhotoSrc">
+        </a>
+      </div>
+
+      <div class="upload-photo-container">
+        <a class="upload-photo" href="#" (click)="fileInput.click()">
+          <div class="d-flex">
+            <div class="mt-2 mr-2"><i class="camera-icon fa fa-camera"></i></div>
+            <div class="mr-2">Update Profile Picture</div>
+          </div>
+        </a>
+        <input type="file" class="uploader" (change)="onUploadProfilePictureClick($event)" #fileInput>
+      </div>
+    </div>
+  </div>
+</div>
